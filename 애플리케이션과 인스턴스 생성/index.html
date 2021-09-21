@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{msg}}</h1>
+    </div>
+
+    <script>
+      // vue 애플리케이션 생성
+      // const app = Vue.createApp({
+      //   data() {
+      //     return {
+      //       msg: 'Hello Vue!',
+      //     };
+      //   },
+      // });
+
+      // vue 애플리케이션을 html의 선택자 DOM에 연결하여 컴포넌트 인스턴스 생성
+      // const viewModel = app.mount('#app');
+      // viewModel.msg = 'Good!';
+
+      // 위의 생성방법을 토대로 체이닝하여 애플리케이션과 컴포넌트 인스턴스 생성하기
+      const App = {
+        data() {
+          return {
+            msg: 'Hello Vue!',
+          };
+        },
+      };
+
+      const vm = Vue.createApp(App).mount('#app');
+    </script>
+  </body>
+</html>
