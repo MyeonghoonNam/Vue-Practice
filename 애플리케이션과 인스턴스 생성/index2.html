@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ msg }}</h1>
+    </div>
+
+    <script>
+      // 라이프 사이클
+      const App = {
+        data() {
+          return {
+            msg: 'Hello Vue!',
+          };
+        },
+        beforeCreate() {
+          // 애플리케이션이 생성되기 전
+          console.log('beforeCreate', this.msg);
+          console.log(document.querySelector('h1'));
+        },
+        created() {
+          // 애플리케이션이 생성된 직후
+          // 하지만 html과 연결은 이루어지지 않은 상태
+          console.log('created', this.msg);
+          console.log(document.querySelector('h1'));
+        },
+        beforeMount() {
+          // created 보다 늦은 시점으로 html 연결이 이루어지기 직전이므로 아직 DOM API 사용불가
+          console.log('beforeMount', this.msg);
+          console.log(document.querySelector('h1'));
+        },
+        mounted() {
+          // 애플리케이션이 생성되어지고 html까지 연결이 이루어진 상태
+          // DOM API 사용가능
+          console.log('mounted', this.msg);
+          console.log(document.querySelector('h1'));
+        },
+        beforeUpdate() {
+          // 애플리케이션의 데이터가 수정될 경우 수정 직전에 발생
+          // 화면이 업데이트 되기 전의 DOM 상태를 말한다. 그러므로 데이터는 수정이 되어있지만 화면의 DOM 상태는 데이터가 수정되기 전의 상태를 가진다.
+          console.log('beforeUpdate!', this.msg);
+          console.log(document.querySelector('h1').textContent);
+        },
+        updated() {
+          // 애플리케이션의 데이터가 수정될 경우 수정 완료 후 발생
+          console.log('updated!');
+          console.log(document.querySelector('h1').textContent);
+        },
+        beforUnmount() {
+          // 애플리케이션의 연결 해제 직전의 상태
+          console.log('beforeUnmount!');
+        },
+        unmounted() {
+          // 애플리케이션의 연결 해제 완료 후 상태
+          console.log('unmount!');
+        },
+      };
+
+      const app = Vue.createApp(App);
+      const vm = app.mount('#app');
+    </script>
+  </body>
+</html>
