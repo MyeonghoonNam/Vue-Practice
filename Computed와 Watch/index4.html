@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ fullName }}</h1>
+      <h2>{{ firstName }}</h2>
+      <h2>{{ lastName }}</h2>
+    </div>
+
+    <script>
+      const App = {
+        data() {
+          return {
+            firstName: 'Hoon',
+            lastName: 'Miller',
+          };
+        },
+        computed: {
+          // 데이터를 사용할 때와 수정할 때의 상황을 고려해 get과 set 속성을 통해 지정가능하다.
+          fullName: {
+            get() {
+              return `${this.firstName} ${this.lastName}`;
+            },
+            set(newName) {
+              const names = newName.split(' ');
+
+              this.firstName = names[0];
+              this.lastName = names[names.length - 1];
+            },
+          },
+        },
+        watch: {
+          // 반응형 데이터를 감시해서 변화가 이루어질 때 watch에 지정한 함수들이 실행되어진다.
+          // 선언해서 사용하고 있는 반응형 데이터를 감시해야한다.
+          // 변화된 값, 기존 값이 인자로 들어오므로 사용가능하다.
+
+          firstName(newValue, oldValue) {
+            console.log('watch', newValue, oldValue);
+          },
+          fullName() {
+            console.log('watch', this.fullName);
+          },
+        },
+      };
+
+      const vm = Vue.createApp(App).mount('#app');
+    </script>
+  </body>
+</html>
