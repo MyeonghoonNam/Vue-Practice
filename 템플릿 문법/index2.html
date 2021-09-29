@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <style>
+      .active {
+        color: red;
+      }
+    </style>
+
+    <div id="app">
+      <!-- v-bind -->
+      <!-- Mustaches(이중 중괄호 구문)는 HTML 속성에 사용할 수 없는데 이 때 사용하는 디렉티브이다.  -->
+      <h1 v-bind:class="name">Hello Vue!</h1>
+      <input type="text" value="Hello Vue!" v-bind:disabled="disabled" />
+
+      <!-- javascript 표현식 사용 가능 -->
+      <h1>{{ count + 2 }}</h1>
+    </div>
+
+    <script>
+      const App = {
+        data() {
+          return {
+            name: 'active',
+            disabled: true,
+            // disbled: {}, [], null ...
+            count: 0,
+          };
+        },
+      };
+
+      const vm = Vue.createApp(App).mount('#app');
+    </script>
+  </body>
+</html>
