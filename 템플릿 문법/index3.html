@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 동적전달인자 -->
+      <!-- 값으로 App의 data 값이 아닌 문자 데이터를 지정해야한다. -->
+      <h1 v-bind:[attr]="'active'">Hello Vue!</h1>
+
+      <!-- 약어 -->
+      <!-- v-bind와 v-on은 축약이 가능하다 -->
+
+      <!-- 전체 문법 -->
+      <!-- <a v-bind:href="url"> ... </a> -->
+
+      <!-- 약어 -->
+      <!-- <a :href="url"> ... </a> -->
+
+      <!-- 동적 전달인자와 함께 쓴 약어 -->
+      <!-- <a :[key]="url"> ... </a> -->
+
+      <!-- 전체 문법 -->
+      <!-- <a v-on:click="doSomething"> ... </a> -->
+
+      <!-- 약어 -->
+      <!-- <a @click="doSomething"> ... </a> -->
+
+      <!-- 동적 전달인자와 함께 쓴 약어 -->
+      <!-- <a @[event]="doSomething"> ... </a> -->
+    </div>
+
+    <script>
+      const App = {
+        data() {
+          return {
+            attr: 'class',
+            // attr: 'id'
+          };
+        },
+      };
+
+      const vm = Vue.createApp(App).mount('#app');
+    </script>
+  </body>
+</html>
