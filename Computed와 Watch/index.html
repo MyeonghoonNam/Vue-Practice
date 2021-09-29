@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ count }}</h1>
+      <h2>{{ double }}</h2>
+      <h2>{{ double }}</h2>
+      <h2>{{ double }}</h2>
+      <h2>{{ double }}</h2>
+    </div>
+
+    <script>
+      const App = {
+        data() {
+          return {
+            count: 3,
+          };
+        },
+        // computed 속성
+        // 캐싱기능이 내장되어 있어서 맨 처음 호출시 저장된 값이 변경이 이루어지지 않는다면 함수를 실행할 필요없이 이전의 계산 결과값을 즉시 반환하여 methods의 함수를 지정하여 실행하는 것보다 메모리에서 효율적이다.
+        computed: {
+          double() {
+            return this.count * 2;
+          },
+        },
+      };
+
+      const vm = Vue.createApp(App).mount('#app');
+      vm.count = 7;
+    </script>
+  </body>
+</html>
