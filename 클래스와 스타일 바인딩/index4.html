@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      h1 {
+        border: 4px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 클래스와 달리 스타일 속성은 카멜케이스를 지원한다. -->
+      <!-- 개발자 도구에서 확인해보면 대쉬케이스로 자동 변경 적용 되어져있다. -->
+      <!-- <h1 :style="{ color, backgroundColor }">Hello Vue!</h1> -->
+
+      <!-- 여러 스타일 객체를 지정시 배열 리터럴을 활용하자 -->
+      <!-- 배열의 마지막 순서에 위치한 객체가 우선순위가 높다 -->
+      <h1 :style="[styleObject, titleStyleObject]">Hello Vue!</h1>
+    </div>
+
+    <script>
+      const App = {
+        data() {
+          return {
+            styleObject: {
+              color: 'royalblue',
+              backgroundColor: 'orange',
+            },
+            titleStyleObject: {
+              fontSize: '40px',
+              fontWeight: 'bold',
+              color: 'brown',
+            },
+          };
+        },
+      };
+
+      const vm = Vue.createApp(App).mount('#app');
+    </script>
+  </body>
+</html>
