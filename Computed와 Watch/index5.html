@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="capitalize">Capitalize</button>
+      <ul>
+        <li v-for="fruit in fruits">{{ fruit.name }}</li>
+      </ul>
+    </div>
+
+    <script>
+      const App = {
+        data() {
+          return {
+            user: {
+              name: 'Hoon',
+              age: 22,
+            },
+            fruits: [
+              { id: 1, name: 'Apple' },
+              { id: 2, name: 'Banana' },
+              { id: 3, name: 'Cherry' },
+            ],
+          };
+        },
+        watch: {
+          // 원시 값에 대한 반응형 감시는 수월하지만 객체와 같은 참조값에 대해서는 반응형 감시가 객체 자체에 대해 이루어지므로 deep 속성을 지정하여 참조값에 대해서도 반응형 감시가 가능하다.
+          user: {
+            // 이름을 변경하면 안된다.
+            handler(newValue, oldValue) {
+              console.log(newValue, oldValue);
+            },
+            deep: true,
+          },
+          fruits: {
+            handler() {
+              console.log(this.fruits);
+            },
+            deep: true,
+            // 반응형 데이터의 변화가 이루어지기 전에 초기화가 이루어지면 실행되도록 하는 속성
+            immediate: true,
+          },
+        },
+        methods: {
+          capitalize() {
+            this.fruits.map((fruit) => {
+              return (fruit.name = fruit.name.toUpperCase());
+            });
+          },
+        },
+      };
+
+      const vm = Vue.createApp(App).mount('#app');
+    </script>
+  </body>
+</html>
