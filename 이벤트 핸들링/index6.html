@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      .parent {
+        width: 200px;
+        height: 100px;
+        background-color: royalblue;
+        padding: 20px;
+      }
+
+      .child {
+        width: 100px;
+        height: 80px;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- currentTarget, target이 일치하는 경우에만 함수 실행한다. -->
+      <div @click.self="log" class="parent">
+        <div class="child"></div>
+      </div>
+    </div>
+
+    <script>
+      const App = {
+        methods: {
+          log(event) {
+            console.log(event.currentTarget, event.target);
+          },
+        },
+      };
+
+      const vm = Vue.createApp(App).mount('#app');
+    </script>
+  </body>
+</html>
