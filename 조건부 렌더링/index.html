@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 조건문 사이에 다른 조건의 태그가 아닌 태그가 끼게되면 동작이 제대로 안된다 -->
+      <!-- template 태그는 말 그대로 태그의 래핑 역할만 하므로 실제 DOM에는 그려지지 않고 래핑된 태그들만 그려지게 된다. -->
+      <!-- <h1 v-if="isShow">Hello Vue !</h1>
+      <template v-else-if="[]">
+        <h2>Application..</h2>
+        <p>1234</p>
+        <span>987</span>
+      </template>
+      <h2 v-else>Good Morning</h2> -->
+
+      <!-- v-if와 v-show -->
+      <!-- v-if는 해당요소를 생성할지 말지를 정한다. -->
+      <!-- v-show는 해당요소를 일단 생성하고 display를 통해 보여줄지 말지를 정한다.-->
+
+      <!-- 초기렌더링에서는 if가 유리하나 show는 전환 비용이 높은 경우에 유리한 편이다 -->
+
+      <!-- v-clock을 활용하여 데이터 처리 전의 UI를 다루기에 용이 -->
+      <button @click="toggle">Toggle!</button>
+      <!-- <h1 v-if="isShow">Hello Vue!</h1> -->
+      <h1 v-show="isShow" v-cloak>{{ msg }}</h1>
+    </div>
+
+    <script>
+      const App = {
+        data() {
+          return {
+            msg: 'Hello Vue!',
+            isShow: null,
+          };
+        },
+        methods: {
+          toggle() {
+            this.isShow = !this.isShow;
+          },
+        },
+      };
+
+      const vm = Vue.createApp(App).mount('#app');
+    </script>
+  </body>
+</html>
