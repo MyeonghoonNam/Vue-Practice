@@ -1,10 +1,18 @@
 <template>
   <h1>{{ msg }}</h1>
-  <h1>{{ name }}</h1>
-  <Hello
-    v-model:message="msg"
-    v-model:name="name"
-  />
+  <Hello>
+    <template #def>
+      <h2>Hello Vue ?</h2>
+      <p>The brown fox!</p>
+    </template>
+    <template #abc>
+      <h3>abc</h3>
+    </template>
+    <template #default="{ username }">
+      <h2>Bye {{ username }}</h2>
+    </template>
+  </Hello>
+  <Button>Click me !</Button>
 </template>
 
 <script>
@@ -17,7 +25,6 @@ export default {
   data() {
     return {
       msg: 'Hello Vue!',
-      name: 'hoon'
     }
   },
 }
