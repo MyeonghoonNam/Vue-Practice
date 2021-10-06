@@ -1,9 +1,6 @@
 <template>
-  <button @click="reverseMsg">
-    Click !
-  </button>
   <Hello
-    :message="msg"
+    v-bind="post"
   />
 </template>
 
@@ -16,13 +13,12 @@ export default {
   },
   data() {
     return {
-      msg: 'Hello Vue!'
+      post: {
+        id: 2,
+        title: 'Hello Vue!',
+        email: 'test@abc.com'
+      }
     }
   },
-  methods: {
-    reverseMsg() {
-      this.msg = this.msg.split('').reverse().join('')
-    }
-  }
 }
 </script>
