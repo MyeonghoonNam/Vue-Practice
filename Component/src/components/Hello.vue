@@ -1,27 +1,36 @@
 <template>
-  <div>
-    <h1 @click="$emit('click')">
-      Click
-    </h1>
-    <h2 @click="$emit('please', 9)">
-      Please
-    </h2>
-  </div>
+  <label>
+    <input
+      :value="message"
+      @input="$emit('update:message', $event.target.value)"
+    />
+  </label>
+  <label>
+    <input
+      :value="name"
+      @input="$emit('update:name', $event.target.value)"
+    />
+  </label>
 </template>
 
 <script>
 export default {
-  emits: {
-    click: null,
-    please: number => {
-      if(number > 10) {
-        return true
-      } else {
-        console.log('number is not greater than 10')
-        return false
-      }
+  props: {
+    // v-model에 특정 네이밍 값이 없으면 기본값은 modelValue로 props에 포함되어진다.
+    // modelValue: {
+    //   type: String,
+    //   default: ''
+    // }
+    message: {
+      type: String,
+      default: ''
+    },
+    name: {
+      type: String,
+      default: ''
     }
-  }
+  },
+  emits: ['update:message', 'update:name']
 }
 </script>
 

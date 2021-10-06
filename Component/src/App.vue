@@ -1,8 +1,9 @@
 <template>
   <h1>{{ msg }}</h1>
+  <h1>{{ name }}</h1>
   <Hello
-    @click="msg += '#$'"
-    @please="msg += '~~~'"
+    v-model:message="msg"
+    v-model:name="name"
   />
 </template>
 
@@ -15,7 +16,8 @@ export default {
   },
   data() {
     return {
-      msg: 'Hello Vue!'
+      msg: 'Hello Vue!',
+      name: 'hoon'
     }
   },
 }
