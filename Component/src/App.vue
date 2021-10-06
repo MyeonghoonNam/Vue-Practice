@@ -1,18 +1,13 @@
 <template>
-  <h1>{{ msg }}</h1>
-  <Hello>
-    <template #def>
-      <h2>Hello Vue ?</h2>
-      <p>The brown fox!</p>
-    </template>
-    <template #abc>
-      <h3>abc</h3>
-    </template>
-    <template #default="{ username }">
-      <h2>Bye {{ username }}</h2>
-    </template>
-  </Hello>
-  <Button>Click me !</Button>
+  <button @click="currentComponent = 'Hello'">
+    Hello !
+  </button>
+  <button @click="currentComponent = 'World'">
+    World !
+  </button>
+  <keep-alive>
+    <component :is="currentComponent" />
+  </keep-alive>
 </template>
 
 <script>
@@ -25,6 +20,7 @@ export default {
   data() {
     return {
       msg: 'Hello Vue!',
+      currentComponent: 'Hello'
     }
   },
 }

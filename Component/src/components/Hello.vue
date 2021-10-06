@@ -1,9 +1,17 @@
 <template>
   <h1>Hello</h1>
-  <slot name="abc"></slot>
-  <slot name="def"></slot>
-  <slot :username="'hoon'"></slot>
 </template>
+
+<script>
+export default {
+  created() {
+    console.log('Hello')
+  },
+  unmounted() {
+    console.log('Hello Unmounted')
+  }
+}
+</script>
 
 <style scoped lang="scss">
 $color: orange;
