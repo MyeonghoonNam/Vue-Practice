@@ -1,37 +1,28 @@
 <template>
-  <div v-if="!isEdit">
-    {{ msg }}
-    <button @click="onEdit">
-      Edit!
-    </button>
-  </div>
-  <div v-else>
-    <input
-      ref="editor"
-      v-model="msg"
-      type="text"
-      @keyup.enter="isEdit = false"
-    />
-  </div>
+  <h1>{{ msg }}</h1>
+  <Hello />
 </template>
 
 <script>
+import Hello from '~/components/Hello'
+
 export default {
+  components: {
+    Hello
+  },
   data() {
     return {
       msg: 'Hello Vue!',
-      isEdit: false
     }
   },
+  created() {
+    this.init()
+  },
   methods: {
-    onEdit() {
-      this.isEdit = true
-      // setTimeout(() => {
-      //   this.$refs.editor.focus()
-      // })
-      this.$nextTick(() => {
-        this.$refs.editor.focus()
-      })
+    async init() {
+      const res = await this.$myName('https://jsonplaceholder.typicode.com/todos/1')
+
+      console.log(res, 'Done!')
     }
   }
 }
