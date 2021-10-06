@@ -1,18 +1,18 @@
 <template>
-  <h1
-    v-bind="$attrs"
-  >
-    Hello
+  <h1 @click="$emit('reverse')">
+    {{ message }}
   </h1>
-
-  <h2>
-    Hi
-  </h2>
 </template>
 
 <script>
 export default {
-  inheritAttrs: false,
+  props: {
+    message: {
+      type: String,
+      default: ''
+    }
+  },
+  emits: ['reverse']
 }
 </script>
 
