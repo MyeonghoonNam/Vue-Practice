@@ -1,13 +1,6 @@
 <template>
-  <button @click="currentComponent = 'Hello'">
-    Hello !
-  </button>
-  <button @click="currentComponent = 'World'">
-    World !
-  </button>
-  <keep-alive>
-    <component :is="currentComponent" />
-  </keep-alive>
+  <h1>{{ msg }}</h1>
+  <Hello ref="hello" />
 </template>
 
 <script>
@@ -20,8 +13,10 @@ export default {
   data() {
     return {
       msg: 'Hello Vue!',
-      currentComponent: 'Hello'
     }
   },
+  mounted() {
+    console.log(this.$refs.hello.$refs.name)
+  }
 }
 </script>
