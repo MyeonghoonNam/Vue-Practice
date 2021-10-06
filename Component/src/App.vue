@@ -1,22 +1,38 @@
 <template>
-  <h1>{{ msg }}</h1>
-  <Hello ref="hello" />
+  <div v-if="!isEdit">
+    {{ msg }}
+    <button @click="onEdit">
+      Edit!
+    </button>
+  </div>
+  <div v-else>
+    <input
+      ref="editor"
+      v-model="msg"
+      type="text"
+      @keyup.enter="isEdit = false"
+    />
+  </div>
 </template>
 
 <script>
-import Hello from '~/components/Hello' // 컴포넌트 지역 등록
-
 export default {
-  components: {
-    Hello
-  },
   data() {
     return {
       msg: 'Hello Vue!',
+      isEdit: false
     }
   },
-  mounted() {
-    console.log(this.$refs.hello.$refs.name)
+  methods: {
+    onEdit() {
+      this.isEdit = true
+      // setTimeout(() => {
+      //   this.$refs.editor.focus()
+      // })
+      this.$nextTick(() => {
+        this.$refs.editor.focus()
+      })
+    }
   }
 }
 </script>
