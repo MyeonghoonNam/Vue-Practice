@@ -1,6 +1,9 @@
 <template>
+  <h1>{{ msg }}</h1>
   <Hello
-    v-bind="post"
+    class="hello"
+    style="font-size: 100px"
+    @click="msg += '!'"
   />
 </template>
 
@@ -13,11 +16,7 @@ export default {
   },
   data() {
     return {
-      post: {
-        id: 2,
-        title: 'Hello Vue!',
-        email: 'test@abc.com'
-      }
+      msg: 'Hello Vue!'
     }
   },
 }

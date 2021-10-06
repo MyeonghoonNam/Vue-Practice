@@ -1,18 +1,18 @@
 <template>
-  <h1>{{ id }} / {{ title }} / {{ email }}</h1>
+  <h1
+    v-bind="$attrs"
+  >
+    Hello
+  </h1>
+
+  <h2>
+    Hi
+  </h2>
 </template>
 
 <script>
 export default {
-  props: {
-    id: Number,
-    title: String,
-    email: {
-      type: String,
-      default: 'hoon@abc.com'
-    }
-  },
-  
+  inheritAttrs: false,
 }
 </script>
 
