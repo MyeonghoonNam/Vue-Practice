@@ -1,23 +1,23 @@
 <template>
-  <div>
-    <h1
-      v-if="msg"
-      class="message"
-      @click="log"
-    >
-      {{ msg }}
-    </h1>
-    <div></div>
-    <Hello />
-  </div>
+  <h1 @click="msg += '!'">
+    {{ msg }}
+  </h1>
+  <Parent />
 </template>
 
 <script>
-import Hello from '~/components/Hello'
+import Parent from '~/components/Parent'
+import { computed } from 'vue'
 
 export default {
   components: {
-    Hello,
+    Parent,
+  },
+  provide() {
+    // 기본적으로 반응성을 가지지 않는다.
+    return {
+      msg: computed(() => this.msg) 
+    }
   },
   data() {
     return {
