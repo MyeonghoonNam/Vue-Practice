@@ -1,6 +1,13 @@
-<template>
+<template> 
+  <h1>{{ msg }}</h1>
   <Hello />
+  <button @click="increaseCount">
+    Increase!
+  </button>
   <World />
+  <button @click="fetchTodo">
+    Update Msg !
+  </button>
 </template>
 
 <script>
@@ -17,5 +24,13 @@ export default {
       msg: 'Hello Vue ~!',
     }
   },
+  methods: {
+    increaseCount() {
+      this.$store.commit('increaseCount')
+    },
+    fetchTodo() {
+      this.$store.dispatch('fetchTodo')
+    }
+  }
 }
 </script>

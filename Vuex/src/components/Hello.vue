@@ -1,24 +1,18 @@
 <template>
-  <h1>Hello.vue</h1>
+  <h1>Hello</h1>
   <div>{{ msg }}</div>
-  <div @click="increaseCount">
-    {{ count }}
-  </div>
-  <button @click="fetchTodo">
-    Get Todo!
-  </button>
+  <div>{{ count }}</div>
 </template>
 
 <script>
-import { state, mutations, actions } from '~/store/index'
-
 export default {
-  data() {
-    return state
-  },
-  methods: {
-    increaseCount: mutations.increaseCount,
-    fetchTodo: actions.fetchTodo
+  computed: {
+    msg() {
+      return this.$store.state.msg
+    },
+    count() {
+      return this.$store.state.count
+    } 
   }
 }
 </script>
