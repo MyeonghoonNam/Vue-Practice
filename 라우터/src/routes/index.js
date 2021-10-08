@@ -2,14 +2,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from './Home'
 import About from './About'
-import Login from './Login'
+// import Login from './Login'
 // import NotFound from './NotFound'
 // import Docs from './Docs'
 // import DocsId from './DocsId'
 
 export default createRouter({
-  
   history: createWebHistory(),
+  scrollBehavior(to) {
+    console.log(to)
+    return { top: 0 }
+  },
   routes: [
     { 
       path: '/',
@@ -17,15 +20,15 @@ export default createRouter({
     },
     {
       path: '/about',
-      name: 'about',
+      // name: 'about',
       component: About,
-      meta: {
-        requiresAuth: true
-      }
+      // meta: {
+      //   requiresAuth: true
+      // }
     },
-    {
-      path: '/login',
-      component: Login
-    }
+    // {
+    //   path: '/login',
+    //   component: Login
+    // }
   ]
 })
