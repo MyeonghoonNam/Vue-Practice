@@ -1,0 +1,9 @@
+{
+  "presets": ["@babel/preset-env"], // 전역에 babel이 적용되어 전역 오염
+  // 위의 문제를 방지하기 위한 플러그인으로 전역 오염을 막고 실제 작성된 코드만이 변환되어 메모리 절약
+  "plugins": [
+    ["@babel/plugin-transform-runtime", {
+      "corejs": 3
+    }]
+  ]
+}
