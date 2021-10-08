@@ -5,7 +5,7 @@
   <RouterLink to="/about">
     About
   </RouterLink> -->
-  <button @click="$router.push({ name: 'home' })">
+  <!-- <button @click="$router.push({ name: 'home' })">
     Home
   </button>
   <button @click="$router.push({ name: 'about' })">
@@ -20,15 +20,14 @@
   >
     Documents Id
   </button>
-  <RouterView />
+  <RouterView /> -->
+  <RouterLink to="/about">
+    About
+  </RouterLink>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      msg: 'Hello Vue ~!',
-    }
-  },
+  
 }
 </script>

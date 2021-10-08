@@ -13,6 +13,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     clean: true
     // filename: 'main.js'
   },
@@ -43,7 +44,7 @@ module.exports = {
       ]
     })
   ],
-  // devServer: {
-  //   port: 8080 기본값
-  // }
+  devServer: {
+    historyApiFallback: true
+  }
 }
